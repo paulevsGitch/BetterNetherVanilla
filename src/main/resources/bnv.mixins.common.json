@@ -1,0 +1,17 @@
+{
+	"required": true,
+	"package": "paulevs.bnv.mixin.common",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"NoiseGeneratorSettingsMixin",
+		"NoiseInterpolatorMixin",
+		"NoiseChunkAccessor",
+		"FungusBlockMixin",
+		"NyliumBlockMixin",
+		"ServerLevelMixin",
+		"NoiseChunkMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

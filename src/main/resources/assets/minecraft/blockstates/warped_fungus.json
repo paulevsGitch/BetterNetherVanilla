@@ -1,0 +1,20 @@
+{
+	"variants": {
+		"": [
+			{ "model": "bnv:block/warped_fungus_1", "y": 270 },
+			{ "model": "bnv:block/warped_fungus_1", "y": 180 },
+			{ "model": "bnv:block/warped_fungus_1", "y": 90 },
+			{ "model": "bnv:block/warped_fungus_1" },
+			
+			{ "model": "bnv:block/warped_fungus_2", "y": 270 },
+			{ "model": "bnv:block/warped_fungus_2", "y": 180 },
+			{ "model": "bnv:block/warped_fungus_2", "y": 90 },
+			{ "model": "bnv:block/warped_fungus_2" },
+			
+			{ "model": "bnv:block/warped_fungus_3", "y": 270 },
+			{ "model": "bnv:block/warped_fungus_3", "y": 180 },
+			{ "model": "bnv:block/warped_fungus_3", "y": 90 },
+			{ "model": "bnv:block/warped_fungus_3" }
+		]
+	}
+}

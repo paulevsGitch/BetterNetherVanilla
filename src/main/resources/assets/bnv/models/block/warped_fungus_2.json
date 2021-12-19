@@ -1,0 +1,81 @@
+{
+	"__comment": "Designed by Paulevs with Cubik Studio - https://cubik.studio",
+	"parent": "block/block",
+	"textures": {
+		"particle": "bnv:block/warped_fungus_model",
+		"texture": "bnv:block/warped_fungus_model",
+		"bottom": "bnv:block/warped_fungus_model_bottom"
+	},
+	"elements": [ 	 
+		{
+			"__comment": "Box1",
+			"from": [ 1, 5, 1 ],
+			"to": [ 9, 8, 9 ],
+			"faces": {
+				"down": { "uv": [ 0, 0, 10, 10 ], "texture": "#bottom" },
+				"up": { "uv": [ 1, 1, 9, 9 ], "texture": "#texture" },
+				"north": { "uv": [ 0, 12, 8, 15 ], "texture": "#texture" },
+				"south": { "uv": [ 0, 12, 8, 15 ], "texture": "#texture" },
+				"west": { "uv": [ 0, 11, 8, 14 ], "texture": "#texture" },
+				"east": { "uv": [ 0, 11, 8, 14 ], "texture": "#texture" }
+			}
+		},
+		{
+			"__comment": "Box2",
+			"from": [ 4, 0, 4 ],
+			"to": [ 6, 5, 6 ],
+			"faces": {
+				"north": { "uv": [ 13, 0, 15, 5 ], "texture": "#texture" },
+				"south": { "uv": [ 13, 0, 15, 5 ], "texture": "#texture" },
+				"west": { "uv": [ 13, 0, 15, 5 ], "texture": "#texture" },
+				"east": { "uv": [ 13, 0, 15, 5 ], "texture": "#texture" }
+			}
+		},
+		{
+			"__comment": "Box3",
+			"from": [ 2, 3, 2 ],
+			"to": [ 8, 5, 8 ],
+			"faces": {
+				"north": { "uv": [ 1, 11, 7, 13 ], "texture": "#bottom" },
+				"south": { "uv": [ 1, 11, 7, 13 ], "texture": "#bottom" },
+				"west": { "uv": [ 1, 11, 7, 13 ], "texture": "#bottom" },
+				"east": { "uv": [ 1, 11, 7, 13 ], "texture": "#bottom" }
+			}
+		},
+		{
+			"__comment": "Box1",
+			"from": [ 10, 4, 8 ],
+			"to": [ 16, 7, 14 ],
+			"faces": {
+				"down": { "uv": [ 0, 0, 10, 10 ], "texture": "#bottom" },
+				"up": { "uv": [ 2, 3, 8, 9 ], "texture": "#texture" },
+				"north": { "uv": [ 1, 11, 7, 14 ], "texture": "#texture" },
+				"south": { "uv": [ 1, 11, 7, 14 ], "texture": "#texture" },
+				"west": { "uv": [ 0, 11, 6, 14 ], "texture": "#texture" },
+				"east": { "uv": [ 0, 11, 6, 14 ], "texture": "#texture" }
+			}
+		},
+		{
+			"__comment": "Box2",
+			"from": [ 12, 0, 10 ],
+			"to": [ 14, 5, 12 ],
+			"faces": {
+				"north": { "uv": [ 13, 0, 15, 5 ], "texture": "#texture" },
+				"south": { "uv": [ 13, 0, 15, 5 ], "texture": "#texture" },
+				"west": { "uv": [ 13, 0, 15, 5 ], "texture": "#texture" },
+				"east": { "uv": [ 13, 0, 15, 5 ], "texture": "#texture" }
+			}
+		},
+		{
+			"__comment": "Box3",
+			"from": [ 11, 2, 9 ],
+			"to": [ 15, 4, 13 ],
+			"faces": {
+				"north": { "uv": [ 1, 11, 5, 13 ], "texture": "#bottom" },
+				"south": { "uv": [ 1, 11, 5, 13 ], "texture": "#bottom" },
+				"west": { "uv": [ 1, 11, 5, 13 ], "texture": "#bottom" },
+				"east": { "uv": [ 1, 11, 5, 13 ], "texture": "#bottom" }
+			}
+		}
+	]
+}

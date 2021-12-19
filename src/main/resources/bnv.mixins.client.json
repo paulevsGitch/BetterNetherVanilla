@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "paulevs.bnv.mixin.client",
+	"compatibilityLevel": "JAVA_17",
+	"client": [
+		"NetherEffectsMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

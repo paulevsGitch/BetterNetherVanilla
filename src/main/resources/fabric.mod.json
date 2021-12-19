@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "bnv",
+	"version": "${version}",
+
+	"name": "Better Nether Vanilla",
+	"description": "Mod that improves vanilla Nether biomes",
+	"authors": [
+		"paulevs"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/betternether",
+		"sources": "https://github.com/paulevsGitch/BetterNether/tree/snapshots",
+		"issues": "https://github.com/paulevsGitch/BetterNether/issues"
+	},
+
+	"license": "MIT",
+	"icon": "assets/bnv/icon.png",
+
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"paulevs.bnv.BNV"
+		]
+	},
+	"mixins": [
+		"bnv.mixins.common.json",
+		"bnv.mixins.client.json"
+	],
+
+	"depends": {
+		"fabricloader": ">=0.12.6",
+		"minecraft": ">=1.18",
+		"fabric": ">=0.43.0",
+        "bclib": ">=1.0.3"
+	}
+}
