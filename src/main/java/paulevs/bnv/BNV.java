@@ -9,7 +9,6 @@ import net.minecraft.world.level.block.Blocks;
 import paulevs.bnv.registries.NetherBiomes;
 import paulevs.bnv.registries.NetherBlocks;
 import paulevs.bnv.registries.NetherFeatures;
-import paulevs.bnv.world.TerrainGenerator;
 import ru.bclib.registry.BaseRegistry;
 
 public class BNV implements ModInitializer {

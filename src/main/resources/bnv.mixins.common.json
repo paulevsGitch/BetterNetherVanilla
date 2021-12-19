@@ -5,6 +5,7 @@
 	"mixins": [
 		"NoiseGeneratorSettingsMixin",
 		"NoiseInterpolatorMixin",
+		"WorldCarverAccessor",
 		"NoiseChunkAccessor",
 		"FungusBlockMixin",
 		"NyliumBlockMixin",

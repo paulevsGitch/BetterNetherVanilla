@@ -2,7 +2,6 @@ package paulevs.bnv.world;
 
 import net.minecraft.util.Mth;
 import ru.bclib.noise.OpenSimplexNoise;
-import ru.bclib.util.MHelper;
 
 import java.util.Random;
 
@@ -37,7 +36,8 @@ public class TerrainGenerator {
 		
 		//float edgeOffset = sizeY * 1.5F;
 		float noiseHor1 = (float) noiseV.eval(px * 0.01, pz * 0.01);
-		float noiseBottom = (float) Math.tanh(noiseHor1 * 10) * 20;
+		float noiseHor2 = (float) noiseH.eval(px * 0.03, pz * 0.03);
+		float noiseBottom = (float) Math.tanh(noiseHor1 * 5 + noiseHor2 * 2) * 15;
 		
 		for (short index = 0; index < data.length; index++) {
 			int py = index * sizeY + minY;

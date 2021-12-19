@@ -2,12 +2,17 @@ package paulevs.bnv.registries;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import paulevs.bnv.BNV;
 import paulevs.bnv.blocks.NyliumOverlay;
 import paulevs.bnv.blocks.WeepingMoss;
+import paulevs.bnv.mixin.common.WorldCarverAccessor;
 import ru.bclib.api.BonemealAPI;
 import ru.bclib.config.PathConfig;
 import ru.bclib.registry.BlockRegistry;
+import ru.bclib.util.CollectionsUtil;
+
+import java.util.Set;
 
 public class NetherBlocks {
 	public static final BlockRegistry REGISTRY = new BlockRegistry(BNV.CREATIVE_TAB, new PathConfig(BNV.MOD_ID, "blocks"));
@@ -20,6 +25,12 @@ public class NetherBlocks {
 	public static void init() {
 		BonemealAPI.addSpreadableBlock(CRIMSON_NYLIUM_OVERLAY, Blocks.NETHERRACK);
 		BonemealAPI.addSpreadableBlock(WARPED_NYLIUM_OVERLAY, Blocks.NETHERRACK);
+		
+		WorldCarverAccessor accessor = WorldCarverAccessor.class.cast(WorldCarver.NETHER_CAVE);
+		Set<Block> blocks = CollectionsUtil.getMutable(accessor.bnv_getReplaceableBlocks());
+		blocks.add(CRIMSON_NYLIUM_OVERLAY);
+		blocks.add(WARPED_NYLIUM_OVERLAY);
+		accessor.bnv_setReplaceableBlocks(blocks);
 	}
 	
 	private static Block register(String name, Block block) {
