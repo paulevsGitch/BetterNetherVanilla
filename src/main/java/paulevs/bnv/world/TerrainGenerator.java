@@ -2,6 +2,7 @@ package paulevs.bnv.world;
 
 import net.minecraft.util.Mth;
 import ru.bclib.noise.OpenSimplexNoise;
+import ru.bclib.util.MHelper;
 
 import java.util.Random;
 
@@ -28,30 +29,23 @@ public class TerrainGenerator {
 		noiseV = new OpenSimplexNoise(random.nextInt());
 	}
 	
-	public static void fillData(double[] data, int px, int pz, int sizeY) {
-		/*float noiseHor1 = (float) noiseV.eval(px * 0.01, pz * 0.01);
-		float noiseHor2 = (float) noiseH.eval(px * 0.03, pz * 0.03);
-		float noiseHor3 = (float) noiseV.eval(px * 0.001, pz * 0.010);
-		float ceiling = (float) noiseH.eval(px * 0.02, pz * 0.02) * 12 + (float) noiseH.eval(px * 0.1, pz * 0.1) * 5;*/
+	// BNB generator port, scaled. Will be replaced
+	public static void fillData(double[] data, int ix, int iz, int sizeY) {
+		double px = ix * 0.5;
+		double pz = iz * 0.5;
 		
-		//float edgeOffset = sizeY * 1.5F;
 		float noiseHor1 = (float) noiseV.eval(px * 0.01, pz * 0.01);
 		float noiseHor2 = (float) noiseH.eval(px * 0.03, pz * 0.03);
-		float noiseBottom = (float) Math.tanh(noiseHor1 * 5 + noiseHor2 * 2) * 15;
+		float noiseHor3 = (float) noiseV.eval(px * 0.001, pz * 0.010);
+		float ceiling = (float) noiseH.eval(px * 0.02, pz * 0.02) * 12 + (float) noiseH.eval(px * 0.1, pz * 0.1) * 5;
 		
-		for (short index = 0; index < data.length; index++) {
-			int py = index * sizeY + minY;
-			float gradient = Math.min(py - minY - 32, maxY - py - sizeY);
-			
-			if (py < middle) {
-				gradient += noiseBottom;
-			}
-			
-			data[index] = -gradient;
-		}
+		final short last = (short) (data.length - 1);
 		
-		/*for (short index = 0; index < data.length; index++) {
-			int py = index * sizeY + minY;
+		data[0] = 2;
+		data[last] = 2;
+		
+		for (short index = 1; index < last; index++) {
+			float py = (index * sizeY + minY) * 0.5F + 32;
 			
 			// Big pillars and ceiling/floor
 			float gradient = 55 - Mth.abs(py - 63.5F);
@@ -86,7 +80,7 @@ public class TerrainGenerator {
 			val += noiseV.eval(px * 0.1, pz * 0.1) * 2;
 			
 			data[index] = -val;
-		}*/
+		}
 	}
 	
 	private static float smoothUnion(float a, float b, float delta) {
