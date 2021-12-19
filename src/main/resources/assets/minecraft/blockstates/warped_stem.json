@@ -1,0 +1,19 @@
+{
+	"variants": {
+		"axis=x": [
+			{ "model": "bnv:block/warped_stem_1", "x": 90, "y": 90 },
+			{ "model": "bnv:block/warped_stem_2", "x": 90, "y": 90 },
+			{ "model": "bnv:block/warped_stem_3", "x": 90, "y": 90 }
+		],
+		"axis=y": [
+			{ "model": "bnv:block/warped_stem_1" },
+			{ "model": "bnv:block/warped_stem_2" },
+			{ "model": "bnv:block/warped_stem_3" }
+		],
+		"axis=z": [
+			{ "model": "bnv:block/warped_stem_1", "x": 90 },
+			{ "model": "bnv:block/warped_stem_2", "x": 90 },
+			{ "model": "bnv:block/warped_stem_3", "x": 90 }
+		]
+	}
+}
