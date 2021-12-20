@@ -20,9 +20,11 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import paulevs.bnv.blocks.NetherBlockProperties.TripplePlant;
@@ -44,7 +46,7 @@ public class WeepingMoss extends BaseBlockNotFull implements RenderLayerProvider
 	public static final EnumProperty<TripplePlant> SHAPE = NetherBlockProperties.TRIPPLE_PLANT;
 	
 	public WeepingMoss() {
-		super(FabricBlockSettings.copyOf(Blocks.MOSS_BLOCK).noOcclusion().noCollission().instabreak());
+		super(FabricBlockSettings.of(Material.PLANT).sound(SoundType.MOSS).noOcclusion().noCollission().instabreak());
 	}
 	
 	@Override
