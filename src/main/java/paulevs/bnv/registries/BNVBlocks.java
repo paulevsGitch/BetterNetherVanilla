@@ -14,7 +14,7 @@ import ru.bclib.util.CollectionsUtil;
 
 import java.util.Set;
 
-public class NetherBlocks {
+public class BNVBlocks {
 	public static final BlockRegistry REGISTRY = new BlockRegistry(BNV.CREATIVE_TAB, new PathConfig(BNV.MOD_ID, "blocks"));
 	
 	public static final Block CRIMSON_NYLIUM_OVERLAY = registerBO("crimson_nylium_overlay", new NyliumOverlay(Blocks.CRIMSON_NYLIUM));

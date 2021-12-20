@@ -6,9 +6,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
-import paulevs.bnv.registries.NetherBiomes;
-import paulevs.bnv.registries.NetherBlocks;
-import paulevs.bnv.registries.NetherFeatures;
+import paulevs.bnv.registries.BNVBiomes;
+import paulevs.bnv.registries.BNVBlocks;
+import paulevs.bnv.registries.BNVFeatures;
 import ru.bclib.registry.BaseRegistry;
 
 public class BNV implements ModInitializer {
@@ -24,9 +24,9 @@ public class BNV implements ModInitializer {
 	
 	@Override
 	public void onInitialize() {
-		NetherBlocks.init();
-		NetherBiomes.init();
-		NetherFeatures.init();
+		BNVBlocks.init();
+		BNVBiomes.init();
+		BNVFeatures.init();
 	}
 
 	public static ResourceLocation makeID(String path) {

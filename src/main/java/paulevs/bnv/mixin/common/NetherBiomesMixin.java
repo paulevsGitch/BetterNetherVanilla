@@ -7,7 +7,6 @@ import net.minecraft.data.worldgen.biome.NetherBiomes;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.NetherPlacements;
 import net.minecraft.data.worldgen.placement.OrePlacements;
-import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
@@ -25,6 +24,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import paulevs.bnv.registries.BNVFeatures;
 
 @Mixin(NetherBiomes.class)
 public class NetherBiomesMixin {
@@ -53,8 +53,9 @@ public class NetherBiomesMixin {
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED)
 			.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, NetherPlacements.WEEPING_VINES)
-			.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TreePlacements.CRIMSON_FUNGI)
-			.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, NetherPlacements.CRIMSON_FOREST_VEGETATION);
+			//.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TreePlacements.CRIMSON_FUNGI)
+			.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, NetherPlacements.CRIMSON_FOREST_VEGETATION)
+			.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BNVFeatures.CRIMSON_HUGE_FUNGUS.getPlacedFeature());
 		
 		BiomeDefaultFeatures.addNetherDefaultOres(builder);
 		
