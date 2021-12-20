@@ -10,12 +10,20 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.SurfaceRules.ConditionSource;
 import net.minecraft.world.level.levelgen.SurfaceRules.RuleSource;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import ru.bclib.api.biomes.BiomeAPI;
 import ru.bclib.api.surface.SurfaceRuleBuilder;
 
 public class BNVBiomes {
 	private static final ConditionSource FLOOR = SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5));
 	private static final ConditionSource CEIL = SurfaceRules.not(SurfaceRules.verticalGradient("bedrock_roof", VerticalAnchor.belowTop(5), VerticalAnchor.top()));
+	private static final RuleSource GRAVEL_SHORE = SurfaceRules.ifTrue(
+		SurfaceRules.stoneDepthCheck(4, false, false, CaveSurface.FLOOR),
+		SurfaceRules.ifTrue(
+			SurfaceRules.verticalGradient("bnv:gravel_shore", VerticalAnchor.aboveBottom(32), VerticalAnchor.aboveBottom(37)),
+			SurfaceRules.state(Blocks.GRAVEL.defaultBlockState())
+		)
+	);
 	private static final RuleSource BEDROCK = SurfaceRules.state(Blocks.BEDROCK.defaultBlockState());
 	private static final BlockState NETHERRACK = Blocks.NETHERRACK.defaultBlockState();
 	
@@ -30,6 +38,7 @@ public class BNVBiomes {
 			.surface(block.defaultBlockState())
 			.rule(-1, SurfaceRules.ifTrue(FLOOR, BEDROCK))
 			.rule(-1, SurfaceRules.ifTrue(CEIL, BEDROCK))
+			.rule(-1, GRAVEL_SHORE)
 			.filler(NETHERRACK)
 			.biome(biome)
 			.build();
