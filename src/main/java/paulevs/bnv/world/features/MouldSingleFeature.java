@@ -30,7 +30,7 @@ public class MouldSingleFeature extends DefaultFeature {
 		BlockPos center = context.origin();
 		Random random = context.random();
 		
-		if (random.nextInt(8) > 0 || level.getBlockState(center.below()).is(BlockTags.NYLIUM)) {
+		if (random.nextInt(4) > 0 || level.getBlockState(center.below()).is(BlockTags.NYLIUM)) {
 			return false;
 		}
 		
