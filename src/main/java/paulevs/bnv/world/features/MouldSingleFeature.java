@@ -3,7 +3,6 @@ package paulevs.bnv.world.features;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,11 +16,11 @@ import ru.bclib.world.features.DefaultFeature;
 
 import java.util.Random;
 
-public class MouldClusterFeature extends DefaultFeature {
+public class MouldSingleFeature extends DefaultFeature {
 	private final BlockState[] states = new BlockState[3];
 	private Block block;
 	
-	public MouldClusterFeature(Block block) {
+	public MouldSingleFeature(Block block) {
 		this.block = block;
 	}
 	
@@ -31,43 +30,23 @@ public class MouldClusterFeature extends DefaultFeature {
 		BlockPos center = context.origin();
 		Random random = context.random();
 		
+		if (random.nextInt(8) > 0 || level.getBlockState(center.below()).is(BlockTags.NYLIUM)) {
+			return false;
+		}
+		
 		if (states[0] == null) {
 			states[0] = block.defaultBlockState().setValue(BNVBlockProperties.TRIPPLE_PLANT, TripplePlant.SMALL);
 			states[1] = block.defaultBlockState().setValue(BNVBlockProperties.TRIPPLE_PLANT, TripplePlant.BOTTOM);
 			states[2] = block.defaultBlockState().setValue(BNVBlockProperties.TRIPPLE_PLANT, TripplePlant.TOP);
 		}
 		
-		MutableBlockPos pos = new MutableBlockPos();
-		byte radius = (byte) MHelper.randRange(2, 4, random);
-		byte count = (byte) (radius * MHelper.randRange(0.8F, 1.5F, random));
-		for (byte i = 0; i < count; i++) {
-			int dx = Mth.clamp(Mth.floor((float) random.nextGaussian() * 2 * radius + 0.5F), -radius, radius);
-			int dz = Mth.clamp(Mth.floor((float) random.nextGaussian() * 2 * radius + 0.5F), -radius, radius);
-			if (((dx + dz) & 1) != 0) {
-				dx += 1;
-			}
-			pos.set(center.getX() + dx, center.getY() + 5, center.getZ() + dz);
-			for (byte j = 0; j < 10; j++) {
-				if (level.getBlockState(pos).is(BlockTags.NYLIUM)) {
-					pos.setY(pos.getY() + 1);
-					if (level.getBlockState(pos).isAir()) {
-						place(level, pos, random);
-						break;
-					}
-				}
-				pos.setY(pos.getY() - 1);
-			}
-		}
-		
-		return true;
-	}
-	
-	private void place(WorldGenLevel level, MutableBlockPos pos, Random random) {
+		MutableBlockPos pos = center.mutable();
 		byte l = (byte) MHelper.randRange(1, 3, random);
 		if (l == 1) {
 			BlocksHelper.setWithoutUpdate(level, pos, states[0]);
-			return;
+			return true;
 		}
+		
 		for (byte i = 0; i < l; i++) {
 			BlocksHelper.setWithoutUpdate(level, pos, i == 0 ? states[1] : states[2]);
 			pos.setY(pos.getY() + 1);
@@ -76,8 +55,10 @@ public class MouldClusterFeature extends DefaultFeature {
 					pos.setY(pos.getY() - 1);
 					BlocksHelper.setWithoutUpdate(level, pos, states[0]);
 				}
-				return;
+				return true;
 			}
 		}
+		
+		return true;
 	}
 }
