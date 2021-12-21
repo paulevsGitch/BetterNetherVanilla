@@ -2,7 +2,6 @@ package paulevs.bnv.world.features;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.WorldGenLevel;
@@ -12,7 +11,6 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import paulevs.bnv.blocks.BNVBlockProperties;
 import paulevs.bnv.blocks.BNVBlockProperties.TripplePlant;
-import paulevs.bnv.blocks.MouldBlock;
 import ru.bclib.util.BlocksHelper;
 import ru.bclib.util.MHelper;
 import ru.bclib.world.features.DefaultFeature;
@@ -45,16 +43,14 @@ public class MouldClusterFeature extends DefaultFeature {
 		for (byte i = 0; i < count; i++) {
 			int dx = Mth.clamp(Mth.floor((float) random.nextGaussian() * 2 * radius + 0.5F), -radius, radius);
 			int dz = Mth.clamp(Mth.floor((float) random.nextGaussian() * 2 * radius + 0.5F), -radius, radius);
+			if (((dx + dz) & 1) != 0) {
+				dx += 1;
+			}
 			pos.set(center.getX() + dx, center.getY() + 5, center.getZ() + dz);
 			for (byte j = 0; j < 10; j++) {
 				if (level.getBlockState(pos).is(BlockTags.NYLIUM)) {
 					pos.setY(pos.getY() + 1);
 					if (level.getBlockState(pos).isAir()) {
-						for (Direction dir: BlocksHelper.HORIZONTAL) {
-							if (level.getBlockState(pos.relative(dir)).getBlock() instanceof MouldBlock) {
-								break;
-							}
-						}
 						place(level, pos, random);
 						break;
 					}

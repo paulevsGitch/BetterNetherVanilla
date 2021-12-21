@@ -9,7 +9,9 @@ import net.minecraft.world.level.block.Blocks;
 import paulevs.bnv.registries.BNVBiomes;
 import paulevs.bnv.registries.BNVBlocks;
 import paulevs.bnv.registries.BNVFeatures;
+import ru.bclib.BCLib;
 import ru.bclib.registry.BaseRegistry;
+import ru.bclib.util.TranslationHelper;
 
 public class BNV implements ModInitializer {
 	public static final String MOD_ID = "bnv";
@@ -27,6 +29,10 @@ public class BNV implements ModInitializer {
 		BNVBlocks.init();
 		BNVBiomes.init();
 		BNVFeatures.init();
+		if (BCLib.isDevEnvironment() && BCLib.isClient()) {
+			TranslationHelper.printMissingEnNames(MOD_ID);
+			TranslationHelper.printMissingNames(MOD_ID, "ru_ru");
+		}
 	}
 
 	public static ResourceLocation makeID(String path) {
