@@ -27,7 +27,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import paulevs.bnv.blocks.NetherBlockProperties.TripplePlant;
+import paulevs.bnv.blocks.BNVBlockProperties.TripplePlant;
 import ru.bclib.api.TagAPI;
 import ru.bclib.blocks.BaseBlockNotFull;
 import ru.bclib.client.models.BasePatterns;
@@ -43,7 +43,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class WeepingMoss extends BaseBlockNotFull implements RenderLayerProvider, TagProvider {
-	public static final EnumProperty<TripplePlant> SHAPE = NetherBlockProperties.TRIPPLE_PLANT;
+	public static final EnumProperty<TripplePlant> SHAPE = BNVBlockProperties.TRIPPLE_PLANT;
 	
 	public WeepingMoss() {
 		super(FabricBlockSettings.of(Material.PLANT).sound(SoundType.MOSS).noOcclusion().noCollission().instabreak());
@@ -119,7 +119,7 @@ public class WeepingMoss extends BaseBlockNotFull implements RenderLayerProvider
 		Map<String, String> textures = Maps.newHashMap();
 		String suffix = blockState.getValue(SHAPE).getSerializedName();
 		textures.put("%texture%", stateId.getNamespace() + ":/block/" + stateId.getPath() + "_" + suffix);
-		Optional<String> pattern = PatternsHelper.createJson(NetherPatterns.CUBE_WALLS, textures);
+		Optional<String> pattern = PatternsHelper.createJson(BNVPatterns.CUBE_WALLS, textures);
 		return ModelsHelper.fromPattern(pattern);
 	}
 	

@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.material.Material;
-import paulevs.bnv.blocks.NetherBlockProperties;
-import paulevs.bnv.blocks.NetherBlockProperties.TripplePlant;
+import paulevs.bnv.blocks.BNVBlockProperties;
+import paulevs.bnv.blocks.BNVBlockProperties.TripplePlant;
 import paulevs.bnv.blocks.WeepingMoss;
 import ru.bclib.noise.OpenSimplexNoise;
 import ru.bclib.util.BlocksHelper;
@@ -71,9 +71,9 @@ public class TreeFungusFeature extends DefaultFeature {
 		final BlockState cap = this.cap.defaultBlockState();
 		
 		if (mossStates[0] == null) {
-			mossStates[0] = this.moss.defaultBlockState().setValue(NetherBlockProperties.TRIPPLE_PLANT, TripplePlant.SMALL);
-			mossStates[1] = this.moss.defaultBlockState().setValue(NetherBlockProperties.TRIPPLE_PLANT, TripplePlant.TOP);
-			mossStates[2] = this.moss.defaultBlockState().setValue(NetherBlockProperties.TRIPPLE_PLANT, TripplePlant.BOTTOM);
+			mossStates[0] = this.moss.defaultBlockState().setValue(BNVBlockProperties.TRIPPLE_PLANT, TripplePlant.SMALL);
+			mossStates[1] = this.moss.defaultBlockState().setValue(BNVBlockProperties.TRIPPLE_PLANT, TripplePlant.TOP);
+			mossStates[2] = this.moss.defaultBlockState().setValue(BNVBlockProperties.TRIPPLE_PLANT, TripplePlant.BOTTOM);
 		}
 		
 		MutableBlockPos pos = center.mutable();

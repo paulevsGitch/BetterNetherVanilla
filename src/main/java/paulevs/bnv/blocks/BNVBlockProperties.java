@@ -4,7 +4,7 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 
-public class NetherBlockProperties {
+public class BNVBlockProperties {
 	public static final EnumProperty<TripplePlant> TRIPPLE_PLANT = EnumProperty.create("shape", TripplePlant.class);
 	public static final BooleanProperty[] DIRECTION_BOOLEAN = new BooleanProperty[] {
 		BooleanProperty.create("north"),

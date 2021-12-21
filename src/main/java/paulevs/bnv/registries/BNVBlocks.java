@@ -4,6 +4,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import paulevs.bnv.BNV;
+import paulevs.bnv.blocks.MouldBlock;
 import paulevs.bnv.blocks.NyliumOverlay;
 import paulevs.bnv.blocks.WeepingMoss;
 import paulevs.bnv.mixin.common.WorldCarverAccessor;
@@ -21,6 +22,9 @@ public class BNVBlocks {
 	public static final Block WARPED_NYLIUM_OVERLAY = registerBO("warped_nylium_overlay", new NyliumOverlay(Blocks.WARPED_NYLIUM));
 	public static final Block CRIMSON_WEEPING_MOSS = register("crimson_weeping_moss", new WeepingMoss());
 	public static final Block WARPED_WEEPING_MOSS = register("warped_weeping_moss", new WeepingMoss());
+	
+	public static final Block CRIMSON_MOULD = register("crimson_mould", new MouldBlock());
+	public static final Block WARPED_MOULD = register("warped_mould", new MouldBlock());
 	
 	public static void init() {
 		BonemealAPI.addSpreadableBlock(CRIMSON_NYLIUM_OVERLAY, Blocks.NETHERRACK);

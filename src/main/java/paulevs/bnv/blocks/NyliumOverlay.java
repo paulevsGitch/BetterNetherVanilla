@@ -40,7 +40,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class NyliumOverlay extends NyliumBlock implements BlockModelProvider, RenderLayerProvider, TagProvider {
-	public static final BooleanProperty[] DIRECTION_BOOLEAN = NetherBlockProperties.DIRECTION_BOOLEAN;
+	public static final BooleanProperty[] DIRECTION_BOOLEAN = BNVBlockProperties.DIRECTION_BOOLEAN;
 	private static final Map<Block, Block> MAPPED_BLOCKS = Maps.newHashMap();
 	private static final BlockPos[] OFFSETS = new BlockPos[] {
 		BlockPos.ZERO.north(),
@@ -172,7 +172,7 @@ public class NyliumOverlay extends NyliumBlock implements BlockModelProvider, Re
 			replacements.put("[ 0, 0, 16, 16 ]", String.format("[ %d, %d, %d, %d ]", x1, z1, x2, z2));
 			
 			modelPath = BNV.makeID(stateId.getPath() + "_plane_" + property.getName());
-			pattern = PatternsHelper.createJson(NetherPatterns.UPPER_PLANE, replacements);
+			pattern = PatternsHelper.createJson(BNVPatterns.UPPER_PLANE, replacements);
 			unbakedModel = ModelsHelper.fromPattern(pattern);
 			modelCache.put(modelPath, unbakedModel);
 			
