@@ -4,7 +4,7 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import paulevs.bnv.BNV;
-import paulevs.bnv.blocks.WeepingMoss;
+import paulevs.bnv.world.features.MouldClusterFeature;
 import paulevs.bnv.world.features.OverlayFixerFeature;
 import paulevs.bnv.world.features.TreeFungusFeature;
 import ru.bclib.api.biomes.BiomeAPI;
@@ -23,7 +23,7 @@ public class BNVFeatures {
 			Blocks.CRIMSON_HYPHAE,
 			Blocks.NETHER_WART_BLOCK,
 			Blocks.SHROOMLIGHT,
-			WeepingMoss.class.cast(BNVBlocks.CRIMSON_WEEPING_MOSS),
+			BNVBlocks.CRIMSON_WEEPING_MOSS,
 			0.75F, 1.7F
 		), 2, true
 	);
@@ -34,9 +34,17 @@ public class BNVFeatures {
 			Blocks.WARPED_HYPHAE,
 			Blocks.WARPED_WART_BLOCK,
 			Blocks.SHROOMLIGHT,
-			WeepingMoss.class.cast(BNVBlocks.WARPED_WEEPING_MOSS),
+			BNVBlocks.WARPED_WEEPING_MOSS,
 			4F, 2.5F
 		), 2, true
+	);
+	
+	public static final BCLFeature CRIMSON_MOULD = BCLFeature.makeVegetationFeature(
+		BNV.makeID("crimson_mould"), new MouldClusterFeature(BNVBlocks.CRIMSON_MOULD), 1, true
+	);
+	
+	public static final BCLFeature WARPED_MOULD = BCLFeature.makeVegetationFeature(
+		BNV.makeID("warped_mould"), new MouldClusterFeature(BNVBlocks.WARPED_MOULD), 1, true
 	);
 	
 	public static void init() {
@@ -44,9 +52,11 @@ public class BNVFeatures {
 			BiomeAPI.addBiomeFeature(biome, OVERLAY_FIXER);
 			if (biomeID.equals(Biomes.CRIMSON_FOREST.location())) {
 				BiomeAPI.addBiomeFeature(biome, CRIMSON_HUGE_FUNGUS);
+				BiomeAPI.addBiomeFeature(biome, CRIMSON_MOULD);
 			}
 			else if (biomeID.equals(Biomes.WARPED_FOREST.location())) {
 				BiomeAPI.addBiomeFeature(biome, WARPED_HUGE_FUNGUS);
+				BiomeAPI.addBiomeFeature(biome, WARPED_MOULD);
 			}
 		});
 	}

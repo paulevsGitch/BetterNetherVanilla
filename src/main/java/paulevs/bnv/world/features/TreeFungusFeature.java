@@ -15,7 +15,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 import net.minecraft.world.level.material.Material;
 import paulevs.bnv.blocks.BNVBlockProperties;
 import paulevs.bnv.blocks.BNVBlockProperties.TripplePlant;
-import paulevs.bnv.blocks.WeepingMoss;
 import ru.bclib.noise.OpenSimplexNoise;
 import ru.bclib.util.BlocksHelper;
 import ru.bclib.util.MHelper;
@@ -35,8 +34,8 @@ public class TreeFungusFeature extends DefaultFeature {
 		state.getMaterial().equals(Material.MOSS);
 	
 	private final BlockState[] mossStates = new BlockState[3];
-	private final WeepingMoss moss;
 	private final Block light;
+	private final Block moss;
 	private final Block stem;
 	private final Block bark;
 	private final Block cap;
@@ -44,7 +43,7 @@ public class TreeFungusFeature extends DefaultFeature {
 	private final float radius;
 	private final float height;
 	
-	public TreeFungusFeature(Block stem, Block bark, Block cap, Block light, WeepingMoss moss, float radius, float height) {
+	public TreeFungusFeature(Block stem, Block bark, Block cap, Block light, Block moss, float radius, float height) {
 		this.light = light;
 		this.moss = moss;
 		this.stem = stem;
@@ -58,8 +57,8 @@ public class TreeFungusFeature extends DefaultFeature {
 	@Override
 	public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
 		WorldGenLevel level = context.level();
-		Random random = context.random();
 		BlockPos center = context.origin();
+		Random random = context.random();
 		
 		if (!canGrow(level.getBlockState(center.below()))) {
 			return false;
