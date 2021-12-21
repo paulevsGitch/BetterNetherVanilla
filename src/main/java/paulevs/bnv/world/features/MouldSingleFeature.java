@@ -30,7 +30,7 @@ public class MouldSingleFeature extends DefaultFeature {
 		BlockPos center = context.origin();
 		Random random = context.random();
 		
-		if (random.nextInt(4) > 0 || level.getBlockState(center.below()).is(BlockTags.NYLIUM)) {
+		if (random.nextInt(4) > 0 || !level.getBlockState(center.below()).is(BlockTags.NYLIUM)) {
 			return false;
 		}
 		
@@ -40,13 +40,13 @@ public class MouldSingleFeature extends DefaultFeature {
 			states[2] = block.defaultBlockState().setValue(BNVBlockProperties.TRIPPLE_PLANT, TripplePlant.TOP);
 		}
 		
-		MutableBlockPos pos = center.mutable();
 		byte l = (byte) MHelper.randRange(1, 3, random);
 		if (l == 1) {
-			BlocksHelper.setWithoutUpdate(level, pos, states[0]);
+			BlocksHelper.setWithoutUpdate(level, center, states[0]);
 			return true;
 		}
 		
+		MutableBlockPos pos = center.mutable();
 		for (byte i = 0; i < l; i++) {
 			BlocksHelper.setWithoutUpdate(level, pos, i == 0 ? states[1] : states[2]);
 			pos.setY(pos.getY() + 1);
